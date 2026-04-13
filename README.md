@@ -25,3 +25,8 @@ npm install
 
 # 5. Run the development server
 npm run dev
+
+## Screenshots
+
+![Login UI](images/login.png)
+![Password Field](images/password.png)
