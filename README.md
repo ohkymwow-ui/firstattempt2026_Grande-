@@ -31,5 +31,8 @@ npm run dev
 ```
 ## Screenshots
 
-![Login UI](images/login.png)
-![Password Field](images/password.png)
+![Login UI](images/image_2026-04-13_093517181.png)
+![Dashboard](images/image_2026-04-13_093537457.png)
+![Profile](images/image_2026-04-13_093546069.png)
+![Events](images/image_2026-04-13_093555029.png)
+![Network](images/image_2026-04-13_093604757.png)
