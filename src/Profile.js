@@ -8,25 +8,25 @@ export default function Profile() {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-slate-900 border-b border-slate-800">
+      <div className="bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate("/dashboard")}
-            className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <ArrowLeft className="w-5 h-5 text-slate-300" />
+            <ArrowLeft className="w-5 h-5 text-gray-700" />
           </button>
-          <h1 className="text-2xl font-bold text-slate-100">Profile</h1>
+          <h1 className="text-2xl font-bold text-gray-900">Profile</h1>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-6 py-8">
-        <div className="bg-slate-800 rounded-lg border border-slate-700 overflow-hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           {/* Profile Header */}
-          <div className="h-32 bg-gradient-to-r from-amber-600 to-orange-600" />
+          <div className="h-32 bg-gradient-to-r from-blue-500 to-blue-600" />
 
           {/* Profile Info */}
           <div className="px-8 py-8 -mt-16 relative">
@@ -36,47 +36,45 @@ export default function Profile() {
 
               {/* Details */}
               <div className="flex-1">
-                <h2 className="text-3xl font-bold text-slate-100 mb-2">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
                   {user?.name}
                 </h2>
-                <p className="text-lg text-amber-500 font-semibold mb-6">
+                <p className="text-lg text-blue-600 font-semibold mb-6">
                   {user?.position} at {user?.company}
                 </p>
 
                 {/* Info Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                   <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <Mail className="w-5 h-5 text-gray-400 mt-1" />
                     <div>
-                      <p className="text-sm text-slate-400">Email</p>
-                      <p className="text-slate-100 font-medium">
-                        {user?.email}
-                      </p>
+                      <p className="text-sm text-gray-600">Email</p>
+                      <p className="text-gray-900 font-medium">{user?.email}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Briefcase className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <Briefcase className="w-5 h-5 text-gray-400 mt-1" />
                     <div>
-                      <p className="text-sm text-slate-400">Position</p>
-                      <p className="text-slate-100 font-medium">
+                      <p className="text-sm text-gray-600">Position</p>
+                      <p className="text-gray-900 font-medium">
                         {user?.position}
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Building className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <Building className="w-5 h-5 text-gray-400 mt-1" />
                     <div>
-                      <p className="text-sm text-slate-400">Company</p>
-                      <p className="text-slate-100 font-medium">
+                      <p className="text-sm text-gray-600">Company</p>
+                      <p className="text-gray-900 font-medium">
                         {user?.company}
                       </p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Calendar className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <Calendar className="w-5 h-5 text-gray-400 mt-1" />
                     <div>
-                      <p className="text-sm text-slate-400">Graduation Year</p>
-                      <p className="text-slate-100 font-medium">
+                      <p className="text-sm text-gray-600">Graduation Year</p>
+                      <p className="text-gray-900 font-medium">
                         {user?.graduationYear}
                       </p>
                     </div>
@@ -86,18 +84,18 @@ export default function Profile() {
                 {/* Bio */}
                 {user?.bio && (
                   <div>
-                    <h3 className="text-sm font-semibold text-slate-200 mb-2">
+                    <h3 className="text-sm font-semibold text-gray-900 mb-2">
                       About
                     </h3>
-                    <p className="text-slate-300">{user.bio}</p>
+                    <p className="text-gray-700">{user.bio}</p>
                   </div>
                 )}
               </div>
 
               {/* Connections */}
-              <div className="bg-slate-700 rounded-lg p-6 md:w-48">
-                <p className="text-sm text-slate-400 mb-2">Connections</p>
-                <p className="text-3xl font-bold text-amber-500">
+              <div className="bg-blue-50 rounded-xl p-6 md:w-48">
+                <p className="text-sm text-gray-600 mb-2">Connections</p>
+                <p className="text-3xl font-bold text-blue-600">
                   {user?.connections}
                 </p>
               </div>

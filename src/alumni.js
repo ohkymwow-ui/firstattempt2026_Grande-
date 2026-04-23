@@ -38,17 +38,15 @@ export default function AlumniLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center px-6 py-4">
         <button
           onClick={() => navigate("/")}
-          className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
         >
-          <ArrowLeft className="w-5 h-5 text-slate-300" />
+          <ArrowLeft className="w-5 h-5 text-gray-800" />
         </button>
-        <h1 className="text-xl font-bold text-slate-100">Alumni Connect</h1>
-        <div className="w-9" />
       </div>
 
       {/* Main Content */}
@@ -56,41 +54,41 @@ export default function AlumniLogin() {
         <div className="w-full max-w-md">
           {/* Logo Section */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-slate-800 rounded-2xl mb-6 ring-1 ring-slate-700">
-              <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-lg font-bold">🎓</span>
+            <div className="inline-flex items-center justify-center w-24 h-24 bg-blue-100 rounded-full mb-8">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
+                <span className="text-white text-xl font-bold">🎓</span>
               </div>
             </div>
-            <h2 className="text-3xl font-bold text-slate-100 mb-3">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">
               Welcome Back
             </h2>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed">
               Sign in to access your exclusive alumni network and events.
             </p>
           </div>
 
           {/* Error Message */}
           {error && (
-            <div className="mb-6 p-4 bg-red-950 border border-red-900 rounded-lg">
-              <p className="text-red-300 text-sm">{error}</p>
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+              <p className="text-red-700 text-sm">{error}</p>
             </div>
           )}
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-6">
             {/* Email Field */}
             <div>
-              <label className="block text-sm font-semibold text-slate-200 mb-2">
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
                 University Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="jane.doe@university.edu"
-                  className="w-full pl-12 pr-4 py-3 bg-slate-800 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:bg-slate-800 focus:border-amber-500 focus:outline-none transition-colors"
+                  className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:bg-white focus:border-blue-500 focus:outline-none transition-colors"
                   disabled={isLoading}
                 />
                 {email && (
@@ -101,29 +99,29 @@ export default function AlumniLogin() {
 
             {/* Password Field */}
             <div>
-              <label className="block text-sm font-semibold text-slate-200 mb-2">
+              <label className="block text-sm font-semibold text-gray-900 mb-2">
                 Password
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12 py-3 bg-slate-800 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:bg-slate-800 focus:border-amber-500 focus:outline-none transition-colors"
+                  className="w-full pl-12 pr-12 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:bg-white focus:border-blue-500 focus:outline-none transition-colors"
                   disabled={isLoading}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-slate-700 rounded transition-colors"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-gray-100 rounded transition-colors"
                   disabled={isLoading}
                 >
                   {showPassword ? (
-                    <EyeOff className="w-5 h-5 text-slate-500" />
+                    <EyeOff className="w-5 h-5 text-gray-400" />
                   ) : (
-                    <Eye className="w-5 h-5 text-slate-500" />
+                    <Eye className="w-5 h-5 text-gray-400" />
                   )}
                 </button>
               </div>
@@ -133,7 +131,7 @@ export default function AlumniLogin() {
             <div className="text-right">
               <Link
                 to="/forgot-password"
-                className="text-amber-500 text-sm font-medium hover:text-amber-400 transition-colors"
+                className="text-blue-600 text-sm font-semibold hover:text-blue-700 transition-colors"
               >
                 Forgot Password?
               </Link>
@@ -143,7 +141,7 @@ export default function AlumniLogin() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-amber-600 hover:bg-amber-500 disabled:bg-amber-700 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-8"
+              className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 mt-8"
             >
               {isLoading ? "Signing in..." : "Sign In"}
               {!isLoading && <span>→</span>}
@@ -151,12 +149,12 @@ export default function AlumniLogin() {
           </form>
 
           {/* Register Link */}
-          <div className="mt-8 pt-6 border-t border-slate-800 text-center">
-            <p className="text-slate-400 text-sm">
+          <div className="mt-8 pt-6 border-t border-gray-200 text-center">
+            <p className="text-gray-600 text-sm">
               Don't have an account?{" "}
               <Link
                 to="/signup"
-                className="text-amber-500 font-semibold hover:text-amber-400 transition-colors"
+                className="text-blue-600 font-semibold hover:text-blue-700 transition-colors"
               >
                 Register
               </Link>
