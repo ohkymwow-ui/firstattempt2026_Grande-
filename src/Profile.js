@@ -1,81 +1,105 @@
-import { Link } from 'react-router-dom';
-import { Home, User, Calendar, Users, Edit } from 'lucide-react';
+﻿import React from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft, Mail, Briefcase, Building, Calendar } from "lucide-react";
+import { useAuth } from "./AuthContext";
 
 export default function Profile() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      {/* Navigation */}
-      <nav className="bg-white shadow-lg">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center">
-              <span className="text-xl font-bold text-blue-600">Alumni Network</span>
-            </div>
-            <div className="flex space-x-8">
-              <Link to="/dashboard" className="flex items-center text-gray-700 hover:text-blue-600">
-                <Home className="w-5 h-5 mr-1" />
-                Dashboard
-              </Link>
-              <Link to="/profile" className="flex items-center text-blue-600">
-                <User className="w-5 h-5 mr-1" />
-                Profile
-              </Link>
-              <Link to="/events" className="flex items-center text-gray-700 hover:text-blue-600">
-                <Calendar className="w-5 h-5 mr-1" />
-                Events
-              </Link>
-              <Link to="/network" className="flex items-center text-gray-700 hover:text-blue-600">
-                <Users className="w-5 h-5 mr-1" />
-                Network
-              </Link>
-            </div>
-          </div>
+    <div className="min-h-screen bg-slate-950">
+      {/* Header */}
+      <div className="bg-slate-900 border-b border-slate-800">
+        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center gap-4">
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="p-2 hover:bg-slate-800 rounded-lg transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 text-slate-300" />
+          </button>
+          <h1 className="text-2xl font-bold text-slate-100">Profile</h1>
         </div>
-      </nav>
+      </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto py-6 px-4">
-        <div className="bg-white rounded-lg shadow p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-900">My Profile</h1>
-            <button className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-              <Edit className="w-4 h-4 mr-2" />
-              Edit Profile
-            </button>
-          </div>
+      <div className="max-w-4xl mx-auto px-6 py-8">
+        <div className="bg-slate-800 rounded-lg border border-slate-700 overflow-hidden">
+          {/* Profile Header */}
+          <div className="h-32 bg-gradient-to-r from-amber-600 to-orange-600" />
 
-          <div className="flex flex-col md:flex-row">
-            {/* Profile Picture */}
-            <div className="md:w-1/3 mb-6 md:mb-0">
-              <div className="w-32 h-32 rounded-full bg-blue-100 flex items-center justify-center mx-auto">
-                <span className="text-4xl">👤</span>
+          {/* Profile Info */}
+          <div className="px-8 py-8 -mt-16 relative">
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              {/* Avatar */}
+              <div className="text-6xl">{user?.avatar || "👤"}</div>
+
+              {/* Details */}
+              <div className="flex-1">
+                <h2 className="text-3xl font-bold text-slate-100 mb-2">
+                  {user?.name}
+                </h2>
+                <p className="text-lg text-amber-500 font-semibold mb-6">
+                  {user?.position} at {user?.company}
+                </p>
+
+                {/* Info Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                  <div className="flex items-start gap-3">
+                    <Mail className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <div>
+                      <p className="text-sm text-slate-400">Email</p>
+                      <p className="text-slate-100 font-medium">
+                        {user?.email}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Briefcase className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <div>
+                      <p className="text-sm text-slate-400">Position</p>
+                      <p className="text-slate-100 font-medium">
+                        {user?.position}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Building className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <div>
+                      <p className="text-sm text-slate-400">Company</p>
+                      <p className="text-slate-100 font-medium">
+                        {user?.company}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-5 h-5 text-amber-500/60 mt-1" />
+                    <div>
+                      <p className="text-sm text-slate-400">Graduation Year</p>
+                      <p className="text-slate-100 font-medium">
+                        {user?.graduationYear}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                {user?.bio && (
+                  <div>
+                    <h3 className="text-sm font-semibold text-slate-200 mb-2">
+                      About
+                    </h3>
+                    <p className="text-slate-300">{user.bio}</p>
+                  </div>
+                )}
               </div>
-            </div>
 
-            {/* Profile Info */}
-            <div className="md:w-2/3 md:pl-6">
-              <h2 className="text-2xl font-semibold mb-4">Jane Doe</h2>
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Graduation Year</label>
-                  <p className="text-gray-900">2020</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Degree</label>
-                  <p className="text-gray-900">Bachelor of Science in Computer Science</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Current Position</label>
-                  <p className="text-gray-900">Software Engineer at Tech Corp</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Location</label>
-                  <p className="text-gray-900">San Francisco, CA</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700">Email</label>
-                  <p className="text-gray-900">jane.doe@university.edu</p>
-                </div>
+              {/* Connections */}
+              <div className="bg-slate-700 rounded-lg p-6 md:w-48">
+                <p className="text-sm text-slate-400 mb-2">Connections</p>
+                <p className="text-3xl font-bold text-amber-500">
+                  {user?.connections}
+                </p>
               </div>
             </div>
           </div>
